@@ -1,0 +1,11 @@
+{
+  "scopeName": "source.regexp.replacement",
+  "type": "tree-sitter",
+  "parser": "tree-sitter-regex-sub",
+  "treeSitter": {
+    "parserSource": "github:lumine-code/tree-sitter-regex-sub#5ed9be0501fb6e74532f2c511f02c15e6f0ca0c5",
+    "wasmBuildTool": "tree-sitter-cli#v0.26.13",
+    "grammar": "regex-replacement.wasm",
+    "highlightsQuery": "regex-replacement-highlights.scm"
+  }
+}

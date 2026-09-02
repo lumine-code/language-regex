@@ -1,0 +1,38 @@
+{
+  "name": "language-regex",
+  "author": "lumine-code",
+  "version": "1.0.0",
+  "description": "Syntax highlighting for regular expressions and replacement templates.",
+  "files": [
+    "grammars",
+    "spec"
+  ],
+  "repository": "https://github.com/lumine-code/language-regex",
+  "bugs": {
+    "url": "https://github.com/lumine-code/language-regex/issues"
+  },
+  "keywords": [
+    "regexp",
+    "pattern",
+    "replacement",
+    "tree-sitter"
+  ],
+  "license": "MIT",
+  "engines": {
+    "lumine": "^1.0.0"
+  },
+  "scripts": {
+    "test": "lumine --test spec",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.9.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-n": "^18.3.0",
+    "globals": "^17.11.0",
+    "prettier": "^3.9.6"
+  }
+}

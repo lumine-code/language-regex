@@ -1,0 +1,12 @@
+{
+  "scopeName": "source.regexp",
+  "type": "tree-sitter",
+  "parser": "tree-sitter-regex",
+  "injectionNames": ["regex"],
+  "treeSitter": {
+    "parserSource": "github:tree-sitter/tree-sitter-regex#v0.25.0",
+    "wasmBuildTool": "tree-sitter-cli#v0.26.13",
+    "grammar": "regex.wasm",
+    "highlightsQuery": "regex-highlights.scm"
+  }
+}
