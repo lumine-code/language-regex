@@ -5,7 +5,7 @@
   "injectionNames": ["regex"],
   "treeSitter": {
     "parserSource": "github:tree-sitter/tree-sitter-regex#v0.25.0",
-    "wasmBuildTool": "tree-sitter-cli#v0.26.13",
+    "wasmBuildTool": "tree-sitter-cli#v0.27.0",
     "grammar": "regex.wasm",
     "highlightsQuery": "regex-highlights.scm"
   }
