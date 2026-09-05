@@ -1,5 +1,11 @@
+const fs = require("fs");
+const path = require("path");
+
 describe("language-regex", () => {
   let editor;
+
+  const fixture = (name) =>
+    fs.readFileSync(path.join(__dirname, "fixtures", name), "utf8").trimEnd();
 
   const setUp = async (scopeName, text) => {
     const grammar = lumine.grammars.grammarForScopeName(scopeName);
@@ -34,7 +40,7 @@ describe("language-regex", () => {
   });
 
   it("parses and highlights a regular expression", async () => {
-    const { languageMode } = await setUp("source.regexp", "^(?<name>[a-z]+)\\k<name>$");
+    const { languageMode } = await setUp("source.regexp", fixture("sample.regex"));
 
     expect(languageMode.tree.rootNode.hasError).toBe(false);
     expect(languageMode.tree.rootNode.descendantsOfType("named_capturing_group").length).toBe(1);
@@ -47,7 +53,7 @@ describe("language-regex", () => {
   it("parses and highlights replacement references without treating literals as references", async () => {
     const { languageMode } = await setUp(
       "source.regexp.replacement",
-      "plain $0 $00 $1 $01 $99 $100 $& $` $' $$ \\n \\$",
+      fixture("sample.regex-replacement"),
     );
 
     expect(languageMode.tree.rootNode.hasError).toBe(false);
