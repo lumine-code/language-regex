@@ -2,7 +2,7 @@
   "scopeName": "source.regexp",
   "type": "tree-sitter",
   "parser": "tree-sitter-regex",
-  "injectionNames": ["regex"],
+  "injectionNames": ["regex", "regexp"],
   "treeSitter": {
     "parserSource": "github:tree-sitter/tree-sitter-regex#v0.25.0",
     "wasmBuildTool": "tree-sitter-cli#v0.27.0",

@@ -2,6 +2,7 @@
   "scopeName": "source.regexp.replacement",
   "type": "tree-sitter",
   "parser": "tree-sitter-regex-sub",
+  "injectionNames": ["regex-replacement", "regexp-replacement"],
   "treeSitter": {
     "parserSource": "github:lumine-code/tree-sitter-regex-sub#84f326c",
     "wasmBuildTool": "tree-sitter-cli#v0.27.0",

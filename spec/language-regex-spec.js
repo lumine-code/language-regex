@@ -29,14 +29,17 @@ describe("language-regex", () => {
     await lumine.packages.activatePackage("language-regex");
   });
 
-  it("registers two Tree-sitter-only grammars and one exact injection name", () => {
+  it("registers exact pattern and replacement injection names", () => {
     const regex = lumine.grammars.grammarForScopeName("source.regexp");
     const replacement = lumine.grammars.grammarForScopeName("source.regexp.replacement");
 
     expect(regex.constructor.name).toBe("TreeSitterGrammar");
-    expect(regex.injectionNames).toEqual(["regex"]);
+    expect(regex.injectionNames).toEqual(["regex", "regexp"]);
     expect(replacement.constructor.name).toBe("TreeSitterGrammar");
-    expect(replacement.injectionNames).toEqual([]);
+    expect(replacement.injectionNames).toEqual(["regex-replacement", "regexp-replacement"]);
+    for (const alias of replacement.injectionNames) {
+      expect(lumine.grammars.treeSitterGrammarForLanguageString(alias)).toBe(replacement);
+    }
   });
 
   it("parses and highlights a regular expression", async () => {
