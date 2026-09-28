@@ -15,7 +15,6 @@ describe("language-regex", () => {
     const languageMode = editor.getBuffer().getLanguageMode();
     await languageMode.ready;
     await languageMode.atTransactionEnd();
-    return { grammar, languageMode };
   };
 
   const scopesAt = (needle, offset = 0) => {
@@ -43,10 +42,11 @@ describe("language-regex", () => {
   });
 
   it("parses and highlights a regular expression", async () => {
-    const { languageMode } = await setUp("source.regexp", fixture("sample.regex"));
+    await setUp("source.regexp", fixture("sample.regex"));
+    const root = editor.getSyntaxNodeAtBufferPosition([0, 0], (node) => node.parent == null);
 
-    expect(languageMode.tree.rootNode.hasError).toBe(false);
-    expect(languageMode.tree.rootNode.descendantsOfType("named_capturing_group").length).toBe(1);
+    expect((await editor.getSyntaxDiagnostics()).hasError).toBe(false);
+    expect(root.descendantsOfType("named_capturing_group").length).toBe(1);
     expect(scopesAt("^")).toContain("keyword.control.anchor.regexp");
     expect(scopesAt("name")).toContain("variable.other.group-name.regexp");
     expect(scopesAt("+")).toContain("keyword.operator.quantifier.regexp");
@@ -54,15 +54,16 @@ describe("language-regex", () => {
   });
 
   it("parses and highlights replacement references without treating literals as references", async () => {
-    const { languageMode } = await setUp(
-      "source.regexp.replacement",
-      fixture("sample.regex-replacement"),
-    );
+    await setUp("source.regexp.replacement", fixture("sample.regex-replacement"));
+    const root = editor.getSyntaxNodeAtBufferPosition([0, 0], (node) => node.parent == null);
 
-    expect(languageMode.tree.rootNode.hasError).toBe(false);
-    expect(
-      languageMode.tree.rootNode.descendantsOfType("capture_reference").map((node) => node.text),
-    ).toEqual(["$1", "$01", "$99", "$10"]);
+    expect((await editor.getSyntaxDiagnostics()).hasError).toBe(false);
+    expect(root.descendantsOfType("capture_reference").map((node) => node.text)).toEqual([
+      "$1",
+      "$01",
+      "$99",
+      "$10",
+    ]);
     expect(scopesAt("$1")).toContain("variable.regexp.replacement");
     expect(scopesAt("$&")).toContain("variable.regexp.replacement");
     expect(scopesAt("$$")).toContain("constant.character.escape.dollar.regexp.replacement");
