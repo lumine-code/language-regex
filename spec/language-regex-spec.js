@@ -45,7 +45,7 @@ describe("language-regex", () => {
     await setUp("source.regexp", fixture("sample.regex"));
     const root = editor.getSyntaxNodeAtBufferPosition([0, 0], (node) => node.parent == null);
 
-    expect((await editor.getSyntaxDiagnostics()).hasError).toBe(false);
+    expect(root.hasError).toBe(false);
     expect(root.descendantsOfType("named_capturing_group").length).toBe(1);
     expect(scopesAt("^")).toContain("keyword.control.anchor.regexp");
     expect(scopesAt("name")).toContain("variable.other.group-name.regexp");
@@ -57,7 +57,7 @@ describe("language-regex", () => {
     await setUp("source.regexp.replacement", fixture("sample.regex-replacement"));
     const root = editor.getSyntaxNodeAtBufferPosition([0, 0], (node) => node.parent == null);
 
-    expect((await editor.getSyntaxDiagnostics()).hasError).toBe(false);
+    expect(root.hasError).toBe(false);
     expect(root.descendantsOfType("capture_reference").map((node) => node.text)).toEqual([
       "$1",
       "$01",
