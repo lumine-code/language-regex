@@ -4,7 +4,7 @@
   "parser": "tree-sitter-regex-sub",
   "injectionNames": ["regex-replacement", "regexp-replacement"],
   "treeSitter": {
-    "parserSource": "github:lumine-code/tree-sitter-regex-sub#84f326c",
+    "parserSource": "github:lumine-code/tree-sitter-regex-sub#84f326cc0ca23c6c783fa02100f4b65f48a16e38",
     "wasmBuildTool": "tree-sitter-cli#v0.27.0",
     "grammar": "regex-replacement.wasm",
     "highlightsQuery": "regex-replacement-highlights.scm"
