@@ -71,4 +71,22 @@ describe("language-regex", () => {
     expect(scopesAt("\\$")).not.toContain("constant.character.escape.backslash.regexp.replacement");
     expect(scopesAt("$0")).not.toContain("variable.regexp.replacement");
   });
+
+  it("highlights named replacement references and reparses incomplete names", async () => {
+    await setUp("source.regexp.replacement", "$<name> $<zażółć> $<unfinished");
+    expect(scopesAt("$<name>")).toContain("variable.regexp.replacement");
+    expect(scopesAt("$<zażółć>")).toContain("variable.regexp.replacement");
+    expect(scopesAt("$<unfinished")).not.toContain("variable.regexp.replacement");
+    editor.setCursorBufferPosition(editor.getBuffer().getEndPosition());
+    editor.insertText(">");
+    const languageMode = editor.getBuffer().getLanguageMode();
+    await languageMode.atTransactionEnd();
+    const root = editor.getSyntaxNodeAtBufferPosition([0, 0], (node) => node.parent == null);
+    expect(root.hasError).toBe(false);
+    expect(root.descendantsOfType("capture_reference").map((node) => node.text)).toEqual([
+      "$<name>",
+      "$<zażółć>",
+      "$<unfinished>",
+    ]);
+  });
 });
