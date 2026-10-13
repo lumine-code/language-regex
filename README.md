@@ -9,6 +9,8 @@ Syntax highlighting for regular expressions and replacement templates.
 - **Search fields**: highlights patterns and replacement templates in Find and Replace.
 - **Replacement references**: distinguishes capture, whole-match, and escaped-dollar substitutions.
 
+![Highlight regular expressions embedded in JavaScript.](.github/demo.png)
+
 ## Installation
 
 To install `language-regex` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-regex`.

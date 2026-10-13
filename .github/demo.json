@@ -1,0 +1,16 @@
+{
+  "title": "language-regex",
+  "description": "Highlight regular expressions embedded in JavaScript.",
+  "recordedOn": "2026-10-13",
+  "sourceRevision": "4283e101a3e5963615fd672a9979fde2db028852",
+  "mode": "normal",
+  "fontSettings": "default",
+  "images": [
+    {
+      "file": "demo.png",
+      "label": "Highlight regular expressions embedded in JavaScript.",
+      "width": 1100,
+      "height": 340
+    }
+  ]
+}
