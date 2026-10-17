@@ -5,7 +5,8 @@
   "description": "Syntax highlighting for regular expressions and replacement templates.",
   "files": [
     "grammars",
-    "spec"
+    "spec",
+    "THIRD_PARTY_NOTICES"
   ],
   "repository": "https://github.com/lumine-code/language-regex",
   "bugs": {
