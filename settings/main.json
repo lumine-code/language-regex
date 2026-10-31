@@ -1,0 +1,9 @@
+{
+  ".source.regexp, .source.regexp.replacement": {
+    "editor": {
+      "commentStart": "",
+      "commentEnd": "",
+      "commentDelimiters": {}
+    }
+  }
+}
