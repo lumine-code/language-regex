@@ -2,6 +2,9 @@
 Source: https://github.com/lumine-code/tree-sitter-regex-sub
 Revision: 3f84d4e25f90c3b761b9510949198aad3b8f53d2
 
+Parser source: github:lumine-code/tree-sitter-regex-sub#3f84d4e25f90c3b761b9510949198aad3b8f53d2
+Resolved commit: 3f84d4e25f90c3b761b9510949198aad3b8f53d2
+
 Original file: LICENSE
 
 MIT License
@@ -30,6 +33,9 @@ SOFTWARE.
 ----- BEGIN THIRD-PARTY LICENSE: parser:tree-sitter_tree-sitter-regex -----
 Source: https://github.com/tree-sitter/tree-sitter-regex
 Revision: v0.25.0
+
+Parser source: github:tree-sitter/tree-sitter-regex#v0.25.0
+Resolved commit: b2ac15e27fce703d2f37a79ccd94a5c0cbe9720b
 
 Original file: LICENSE
 
